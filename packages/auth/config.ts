@@ -31,24 +31,24 @@ if (env.GOOGLE_CLIENT_ID) {
   );
 }
 
-if (env.RESEND_AUTH) {
-  config.providers.push(
-    Resend({
-      apiKey: env.RESEND_API_KEY,
-      normalizeIdentifier(identifier) {
-        if (env.RESEND_ALLOWED_EMAILS && !env.RESEND_ALLOWED_EMAILS.includes(identifier)) {
-          throw new Error("Email not allowed");
-        }
-        return identifier;
-      },
-      ...(env.SIMULATE_EMAILS && {
-        sendVerificationRequest: async ({ identifier, url, provider }) => {
-          console.log(`🔗 TO LOGIN CLICK HERE 👇\n\n${url}\n`);
-        },
-      }),
-    })
-  );
-}
+//if (env.RESEND_AUTH) {
+  //config.providers.push(
+    //Resend({
+      //apiKey: env.RESEND_API_KEY,
+   //   normalizeIdentifier(identifier) {
+   //     if (env.RESEND_ALLOWED_EMAILS && !env.RESEND_ALLOWED_EMAILS.includes(identifier)) {
+     //     throw new Error("Email not allowed");
+ //       }
+   //     return identifier;
+//      },
+  //    ...(env.SIMULATE_EMAILS && {
+    //    sendVerificationRequest: async ({ identifier, url, provider }) => {
+ //         console.log(`🔗 TO LOGIN CLICK HERE 👇\n\n${url}\n`);
+   //     },
+//      }),
+ //   })
+//  );
+// }
 
 // Simple username and password in env:
 if (env.AUTH_USERNAME && env.AUTH_PASSWORD) {
